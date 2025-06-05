@@ -17,41 +17,41 @@ struct SettingsView: View {
     
     var body: some View {
         NavigationView {
-            Form {
+                Form {
                 Section(header: Text("Pay Rate")) {
-                    HStack {
+                        HStack {
                         Text("$")
                         TextField("Hourly Wage", text: $hourlyWage)
-                            .keyboardType(.decimalPad)
-                    }
-                    
-                    HStack {
+                                .keyboardType(.decimalPad)
+                        }
+                        
+                        HStack {
                         TextField("Tax Rate", text: $taxRate)
                             .keyboardType(.decimalPad)
-                        Text("%")
+                            Text("%")
+                        }
                     }
-                }
-                
-                Section(header: Text("Week Settings")) {
+                    
+                    Section(header: Text("Week Settings")) {
                     Picker("Week Starts On", selection: $weekStartDay) {
-                        Text("Monday").tag(1)
-                        Text("Tuesday").tag(2)
-                        Text("Wednesday").tag(3)
-                        Text("Thursday").tag(4)
-                        Text("Friday").tag(5)
-                        Text("Saturday").tag(6)
+                            Text("Monday").tag(1)
+                            Text("Tuesday").tag(2)
+                            Text("Wednesday").tag(3)
+                            Text("Thursday").tag(4)
+                            Text("Friday").tag(5)
+                            Text("Saturday").tag(6)
                         Text("Sunday").tag(7)
+                            }
+                        }
                     }
-                }
-            }
             .navigationTitle("Settings")
             .navigationBarItems(
                 leading: Button("Cancel") {
                     presentationMode.wrappedValue.dismiss()
                 },
                 trailing: Button("Save") {
-                    saveSettings()
-                    presentationMode.wrappedValue.dismiss()
+                saveSettings()
+                presentationMode.wrappedValue.dismiss()
                 }
             )
         }

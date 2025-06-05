@@ -22,8 +22,8 @@ struct WeeklySummaryView: View {
                 
                 Divider()
                     .background(Color.gray.opacity(0.5))
-                
-                // Earnings
+            
+            // Earnings
                 VStack(alignment: .leading, spacing: 4) {
                     Text("Earnings")
                         .font(.subheadline)

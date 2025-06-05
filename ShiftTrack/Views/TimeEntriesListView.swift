@@ -5,9 +5,9 @@ struct TimeEntriesListView: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
-            Text("Time Entries")
-                .font(.headline)
-                .foregroundColor(.white)
+                Text("Time Entries")
+                    .font(.headline)
+                    .foregroundColor(.white)
             
             if timeManager.timeEntries.isEmpty {
                 Text("No time entries yet")
@@ -17,8 +17,8 @@ struct TimeEntriesListView: View {
                     .padding()
             } else {
                 ScrollView {
-                    LazyVStack(spacing: 12) {
-                        ForEach(timeManager.timeEntries) { entry in
+            LazyVStack(spacing: 12) {
+                ForEach(timeManager.timeEntries) { entry in
                             TimeEntryRow(entry: entry)
                                 .contextMenu {
                                     Button(action: {
