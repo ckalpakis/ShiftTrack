@@ -8,27 +8,31 @@ struct TimeEntryView: View {
     @State private var startTime = Date()
     @State private var endTime = Date()
     
+    private var duration: Double {
+        endTime.timeIntervalSince(startTime) / 3600
+    }
+    
     var body: some View {
         NavigationView {
             Form {
                 Section(header: Text("Start Time")) {
                     DatePicker("", selection: $startTime, displayedComponents: [.date, .hourAndMinute])
-                            .datePickerStyle(WheelDatePickerStyle())
-                            .labelsHidden()
-                    }
-                    
+                        .datePickerStyle(WheelDatePickerStyle())
+                        .labelsHidden()
+                }
+                
                 Section(header: Text("End Time")) {
                     DatePicker("", selection: $endTime, displayedComponents: [.date, .hourAndMinute])
-                            .datePickerStyle(WheelDatePickerStyle())
-                            .labelsHidden()
-                    }
-                    
+                        .datePickerStyle(WheelDatePickerStyle())
+                        .labelsHidden()
+                }
+                
                 Section {
-                        HStack {
+                    HStack {
                         Text("Duration")
-                            Spacer()
-                        Text(String(format: "%.1f hours", endTime.timeIntervalSince(startTime) / 3600))
-                                    .foregroundColor(.gray)
+                        Spacer()
+                        Text(String(format: "%.1f hours", duration))
+                            .foregroundColor(.gray)
                     }
                 }
             }
@@ -38,8 +42,8 @@ struct TimeEntryView: View {
                     isPresented = false
                 },
                 trailing: Button("Save") {
-                        saveTimeEntry()
-                        isPresented = false
+                    saveTimeEntry()
+                    isPresented = false
                 }
                 .disabled(endTime <= startTime)
             )
